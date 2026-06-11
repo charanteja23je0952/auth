@@ -1,0 +1,32 @@
+<%-include('partials/header')%>
+<h1>Login</h1>
+<form action="/login" method="POST">
+	<label>Email</label>
+	<input
+		type="email"
+		name="email"
+		required
+	>
+	<div>
+		<%=errors?errors.email:''%>
+	</div>
+	<br>
+	<label>Password</label>
+	<input
+		type="password"
+		name="password"
+		required
+	>
+	<div>
+		<%=errors?errors.password:''%>
+	</div>
+	<br>
+	<button type="submit">
+		Login
+	</button>
+</form>
+<p>
+	Don't have an account?
+	<a href="/signup">Signup</a>
+</p>
+<%-include('partials/footer')%>

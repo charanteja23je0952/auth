@@ -1,0 +1,23 @@
+<%-include('partials/header')%>
+<h1>Edit Profile</h1>
+<form method="POST">
+	<label>Email</label>
+	<input
+		type="email"
+		name="email"
+		value="<%=user.email%>"
+		required
+	>
+	<br><br>
+	<label>Data</label>
+	<input
+		type="text"
+		name="data"
+		value="<%=user.data||''%>"
+	>
+	<br><br>
+	<button type="submit">
+		Save
+	</button>
+</form>
+<%-include('partials/footer')%>
