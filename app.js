@@ -2,13 +2,12 @@ const express=require('express');
 const mongoose=require('mongoose');
 require('dotenv').config();
 const cookieparser=require('cookie-parser');
-const auth_routes=require('./routes/auth_routes');
-const user_routes=require('./routes/user_routes');
-const admin_routes=require('./routes/admin_routes');
+const auth_routes=require('./features/auth/auth_routes');
+const user_routes=require('./features/user/user_routes');
+const admin_routes=require('./features/admin/admin_routes');
 const {check_user}=require('./middleware/auth_middlware');
+const errorHandler=require('./middleware/errorHandler');
 const app=express();
-app.set('view engine','ejs');
-app.use(express.static('public'));
 app.use(express.urlencoded({ extended:true }));
 app.use(express.json());
 app.use(cookieparser());
@@ -17,12 +16,7 @@ mongoose.connect(DB_URL)
     .then((result)=>app.listen(3000))
     .catch((err)=>console.log(err));
 app.use(check_user);
-app.get('/',(req,res)=>{
-    res.redirect('/login');
-});
-app.get('/home',(req,res)=>{
-    res.redirect('/login');
-});
 app.use(auth_routes);
 app.use(user_routes);
 app.use(admin_routes);
+app.use(errorHandler);
