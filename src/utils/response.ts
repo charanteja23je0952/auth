@@ -7,9 +7,9 @@ const ok = (
     status: number = 200
 ): void => {
     res.status(status).json({
-    success: true,
-    message,
-    data,
+        success: true,
+        message,
+        data,
     });
 };
 
@@ -20,9 +20,9 @@ const fail = (
     data: any = null
 ): void => {
     res.status(status).json({
-    success: false,
-    message,
-    data,
+        success: false,
+        message,
+        data,
     });
 };
 
